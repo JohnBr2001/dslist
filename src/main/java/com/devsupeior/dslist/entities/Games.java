@@ -23,12 +23,18 @@ public class Games {
 	private Integer year;
 	private String genre;
 	private String plataform;
+	private Double score;
 	private String imgUrl;
+	
+	@Column(columnDefinition = "TEXT")
+	private String shortDescription;
+	
+	@Column(columnDefinition = "TEXT")
 	private String longDescription;
 	
 	
 
-	public Games(Long id, String title, Integer year, String genre, String plataform, String imgUrl,
+	public Games(Long id, String title, Integer year, String genre, String plataform, Double score, String imgUrl, String shortDescription, 
 			String longDescription) {
 	
 		this.id = id;
@@ -36,7 +42,9 @@ public class Games {
 		this.year = year;
 		this.genre = genre;
 		this.plataform = plataform;
+		this.score = score;
 		this.imgUrl = imgUrl;
+		this.shortDescription = shortDescription;
 		this.longDescription = longDescription;
 	}
 
@@ -100,6 +108,20 @@ public class Games {
 		this.plataform = plataform;
 	}
 
+	
+	
+
+
+	public Double getScore() {
+		return score;
+	}
+
+
+
+	public void setScore(Double score) {
+		this.score = score;
+	}
+
 
 
 	public String getImgUrl() {
@@ -110,6 +132,19 @@ public class Games {
 
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+
+
+	
+
+	public String getShortDescription() {
+		return shortDescription;
+	}
+
+
+
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
 	}
 
 
