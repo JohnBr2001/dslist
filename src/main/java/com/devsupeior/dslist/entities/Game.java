@@ -11,8 +11,8 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "td_game")
-public class Games {
+@Table(name = "tb_game")
+public class Game {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Games {
 	@Column(name = "game_year")
 	private Integer year;
 	private String genre;
-	private String plataform;
+	private String platforms;
 	private Double score;
 	private String imgUrl;
 	
@@ -32,16 +32,18 @@ public class Games {
 	@Column(columnDefinition = "TEXT")
 	private String longDescription;
 	
-	
+	public Game() {
+		
+	}
 
-	public Games(Long id, String title, Integer year, String genre, String plataform, Double score, String imgUrl, String shortDescription, 
+	public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl, String shortDescription, 
 			String longDescription) {
 	
 		this.id = id;
 		this.title = title;
 		this.year = year;
 		this.genre = genre;
-		this.plataform = plataform;
+		this.platforms = platforms;
 		this.score = score;
 		this.imgUrl = imgUrl;
 		this.shortDescription = shortDescription;
@@ -98,14 +100,14 @@ public class Games {
 
 
 
-	public String getPlataform() {
-		return plataform;
+	public String getPlatforms() {
+		return platforms;
 	}
 
 
 
-	public void setPlataform(String plataform) {
-		this.plataform = plataform;
+	public void setPlatforms(String platforms) {
+		this.platforms = platforms;
 	}
 
 	
@@ -176,7 +178,7 @@ public class Games {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Games other = (Games) obj;
+		Game other = (Game) obj;
 		return Objects.equals(id, other.id);
 	}
 	
