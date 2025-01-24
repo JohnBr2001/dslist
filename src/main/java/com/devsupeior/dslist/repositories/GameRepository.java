@@ -1,12 +1,27 @@
 package com.devsupeior.dslist.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import com.devsupeior.dslist.projections.GameMinProjection;
+import com.devsupeior.dslist.repositories.GameListRepository;
 import com.devsupeior.dslist.entities.Game;
 
 
 public interface GameRepository extends JpaRepository<Game, Long> {
 	
-
+	
+	@Query(nativeQuery = true, value = """
+	SELECT tb_game.id, tb_game.title 
+    FROM tb_game
+		INNER JOIN tb_belonging ON tb_game.id = tb_belonging.game_id
+		WHERE tb_belonging.list_id = :listId
+		ORDER BY tb_belonging.position
+				""")
+	List<GameMinProjection> searchByList(Long listId);
+	
 
 }
